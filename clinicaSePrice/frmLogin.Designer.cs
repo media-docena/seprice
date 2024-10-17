@@ -60,6 +60,7 @@
             // 
             // cboRol
             // 
+            cboRol.DropDownStyle = ComboBoxStyle.DropDownList;
             cboRol.Font = new Font("Segoe UI", 14F);
             cboRol.FormattingEnabled = true;
             cboRol.Items.AddRange(new object[] { "Administrador", "Médico" });
