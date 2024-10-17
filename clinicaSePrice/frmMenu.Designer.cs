@@ -205,7 +205,7 @@
             lblRol.AutoSize = true;
             lblRol.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblRol.ForeColor = Color.FromArgb(33, 32, 43);
-            lblRol.Location = new Point(837, 26);
+            lblRol.Location = new Point(819, 26);
             lblRol.Name = "lblRol";
             lblRol.Size = new Size(107, 20);
             lblRol.TabIndex = 2;
@@ -214,7 +214,7 @@
             // lblNomUsu
             // 
             lblNomUsu.AutoSize = true;
-            lblNomUsu.Location = new Point(833, 6);
+            lblNomUsu.Location = new Point(818, 6);
             lblNomUsu.Name = "lblNomUsu";
             lblNomUsu.Size = new Size(112, 20);
             lblNomUsu.TabIndex = 1;
@@ -285,7 +285,9 @@
             MinimizeBox = false;
             MinimumSize = new Size(1300, 650);
             Name = "frmMenu";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "MENU ";
+            Load += frmMenu_Load;
             pnlSide.ResumeLayout(false);
             pnlSide.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
