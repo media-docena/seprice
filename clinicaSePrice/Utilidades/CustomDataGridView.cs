@@ -24,12 +24,12 @@ namespace clinicaSePrice.Utilidades
             datagrid.ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle
             {
                 BackColor = Color.FromArgb(33, 32, 43),
-                SelectionBackColor = Color.FromArgb(100, 97, 129),
+                SelectionBackColor = Color.FromArgb(66, 64, 86),
                 ForeColor = Color.FromArgb(255, 255, 255)
             };
             datagrid.DefaultCellStyle = new DataGridViewCellStyle
             {
-                SelectionBackColor = Color.FromArgb(248, 244, 255),
+                SelectionBackColor = Color.FromArgb(151, 149, 171),
                 SelectionForeColor = Color.FromArgb(0, 0, 0),
             };
             datagrid.ColumnHeadersHeight = 30;
@@ -45,13 +45,13 @@ namespace clinicaSePrice.Utilidades
                 btnAccionColumn.UseColumnTextForButtonValue = true;
                 btnAccionColumn.Width = 90;
                 btnAccionColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-
+              
 
                 datagrid.Columns.Add(btnAccionColumn);
 
             }
 
-
+            datagrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 }
