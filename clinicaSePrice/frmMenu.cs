@@ -41,7 +41,7 @@ namespace clinicaSePrice
             lblRol.Text = _rol;
         }
 
-        private void ocultarHC() 
+        private void ocultarHC()
         {
             //*************************************
             // Si el usuario logueado es Admin
@@ -51,6 +51,15 @@ namespace clinicaSePrice
             if (_rol == "Administrador") {
                 btnHC.Visible = false;
             }
+        }
+
+        private void btnTurnos_Click(object sender, EventArgs e)
+        {
+            // Pasamos al formulario del paciente 
+            // para luego tomar el turno
+            frmPaciente menu = new frmPaciente();
+            menu.Show();
+            this.Hide();
         }
     }
 }
