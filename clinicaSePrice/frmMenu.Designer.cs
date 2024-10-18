@@ -155,6 +155,7 @@
             btnTurnos.TabIndex = 3;
             btnTurnos.Text = "Turnos";
             btnTurnos.UseVisualStyleBackColor = true;
+            btnTurnos.Click += btnTurnos_Click;
             // 
             // lblSePrice
             // 

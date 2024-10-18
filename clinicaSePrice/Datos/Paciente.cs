@@ -54,39 +54,52 @@ namespace clinicaSePrice.Datos
             return salida;
         }
 
-        //public void listarPacientes() {
+        public List<E_Paciente> listar(string pBuscado = "")
+        {
+            var listaPacientes = new List<E_Paciente>();
 
-        //    MySqlConnection sqlCon = new MySqlConnection();
+            MySqlConnection sqlCon = new MySqlConnection();
 
-        //    try {
-        //        sqlCon = Conexion.getInstancia().CrearConexion();
-        //        MySqlCommand comando = new MySqlCommand("sp_buscarPaciente", sqlCon);
-        //        comando.CommandType = CommandType.StoredProcedure;
+            try {
+                sqlCon = Conexion.getInstancia().CrearConexion();
+                MySqlCommand comando = new MySqlCommand("sp_buscarPaciente", sqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("busqueda", MySqlDbType.VarChar).Value = pBuscado;
+                sqlCon.Open();
 
-        //        sqlCon.Open();
+                // Leemos el resultado de la query ejecutada
+                MySqlDataReader reader;
+                reader = comando.ExecuteReader();
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+                        // Instaciamos los pacientes de cada fila leída del reader
+                        var paciente = new E_Paciente
+                        {
 
-        //        // Leemos el resultado de la query ejecutada
-        //        MySqlDataReader reader;
-        //        reader = comando.ExecuteReader();
-        //        if (reader.HasRows) {
-        //            while (reader.Read()) {
-        //                int fila = "";
-        //            }
-        //        }
-        //        else {
-        //            MessageBox.Show("No existen datos para la carga de la grilla.",
-        //                "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        }
-        //    }
-        //    catch (Exception ex) {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    finally {
-        //        if (sqlCon.State == ConnectionState.Open) {
-        //            sqlCon.Close();
-        //        }
-        //    }
+                            IdPaciente = reader.GetInt32(0),
+                            Nombre = reader.GetString(1),
+                            Apellido = reader.GetString(2),
+                            DNI = reader.GetString(3),
+                            FecNac = DateOnly.FromDateTime(reader.GetDateTime(4)),
+                            Telefono = reader.GetString(5),
+                            Correo = reader.GetString(6),
+                            SexoPac = reader.GetString(7),
+                            CoberturaPac = Convert.ToBoolean(reader.GetInt32(8))
+                        };
 
-        //}
+                        listaPacientes.Add(paciente);
+                    }
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+            finally {
+                if (sqlCon.State == ConnectionState.Open) {
+                    sqlCon.Close();
+                }
+            }
+            return listaPacientes;
+        }
     }
 }

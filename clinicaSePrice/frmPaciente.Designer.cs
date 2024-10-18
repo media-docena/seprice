@@ -36,28 +36,33 @@
             picLogo = new PictureBox();
             dgvPacientes = new DataGridView();
             pnlBuscarP = new Panel();
+            txtBuscarP = new TextBox();
             grpNuevoPac = new GroupBox();
+            cboSexo = new ComboBox();
             cboCoberturaP = new ComboBox();
             lblCoberturaP = new Label();
             dtpFecNacP = new DateTimePicker();
             lblFecNacP = new Label();
-            txtSexo = new TextBox();
             lblSexo = new Label();
+            txtDNI = new TextBox();
+            lblDNIP = new Label();
             txtCorreoP = new TextBox();
             lblCorreoP = new Label();
             txtTelP = new TextBox();
             lblTelP = new Label();
-            txtDNI = new TextBox();
-            lblDNIP = new Label();
             txtApeP = new TextBox();
             lblApeP = new Label();
             txtNombreP = new TextBox();
             lblNombre = new Label();
             btnRegistrarP = new Button();
+            picSearch = new PictureBox();
+            btnNuevoP = new Button();
             pnlSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvPacientes).BeginInit();
+            pnlBuscarP.SuspendLayout();
             grpNuevoPac.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picSearch).BeginInit();
             SuspendLayout();
             // 
             // pnlSide
@@ -150,30 +155,41 @@
             dgvPacientes.RowHeadersWidth = 51;
             dgvPacientes.Size = new Size(961, 263);
             dgvPacientes.TabIndex = 2;
+            dgvPacientes.CellContentClick += dgvPacientes_CellContentClick;
             // 
             // pnlBuscarP
             // 
             pnlBuscarP.BackColor = Color.White;
-            pnlBuscarP.Location = new Point(860, 243);
+            pnlBuscarP.Controls.Add(txtBuscarP);
+            pnlBuscarP.Location = new Point(860, 249);
             pnlBuscarP.Name = "pnlBuscarP";
-            pnlBuscarP.Size = new Size(326, 45);
+            pnlBuscarP.Size = new Size(326, 39);
             pnlBuscarP.TabIndex = 3;
+            // 
+            // txtBuscarP
+            // 
+            txtBuscarP.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtBuscarP.Location = new Point(6, 7);
+            txtBuscarP.Name = "txtBuscarP";
+            txtBuscarP.Size = new Size(310, 32);
+            txtBuscarP.TabIndex = 0;
+            txtBuscarP.TextChanged += txtBuscarP_TextChanged;
             // 
             // grpNuevoPac
             // 
             grpNuevoPac.BackColor = Color.White;
+            grpNuevoPac.Controls.Add(cboSexo);
             grpNuevoPac.Controls.Add(cboCoberturaP);
             grpNuevoPac.Controls.Add(lblCoberturaP);
             grpNuevoPac.Controls.Add(dtpFecNacP);
             grpNuevoPac.Controls.Add(lblFecNacP);
-            grpNuevoPac.Controls.Add(txtSexo);
             grpNuevoPac.Controls.Add(lblSexo);
+            grpNuevoPac.Controls.Add(txtDNI);
+            grpNuevoPac.Controls.Add(lblDNIP);
             grpNuevoPac.Controls.Add(txtCorreoP);
             grpNuevoPac.Controls.Add(lblCorreoP);
             grpNuevoPac.Controls.Add(txtTelP);
             grpNuevoPac.Controls.Add(lblTelP);
-            grpNuevoPac.Controls.Add(txtDNI);
-            grpNuevoPac.Controls.Add(lblDNIP);
             grpNuevoPac.Controls.Add(txtApeP);
             grpNuevoPac.Controls.Add(lblApeP);
             grpNuevoPac.Controls.Add(txtNombreP);
@@ -185,8 +201,19 @@
             grpNuevoPac.TabStop = false;
             grpNuevoPac.Text = "NUEVO PACIENTE";
             // 
+            // cboSexo
+            // 
+            cboSexo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboSexo.FormattingEnabled = true;
+            cboSexo.Items.AddRange(new object[] { "Masculino", "Femenino" });
+            cboSexo.Location = new Point(498, 135);
+            cboSexo.Name = "cboSexo";
+            cboSexo.Size = new Size(208, 28);
+            cboSexo.TabIndex = 16;
+            // 
             // cboCoberturaP
             // 
+            cboCoberturaP.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCoberturaP.FormattingEnabled = true;
             cboCoberturaP.Items.AddRange(new object[] { "Sí", "No" });
             cboCoberturaP.Location = new Point(733, 135);
@@ -205,13 +232,14 @@
             // 
             // dtpFecNacP
             // 
-            dtpFecNacP.Format = DateTimePickerFormat.Short;
+            dtpFecNacP.CustomFormat = "dd/MM/yyyy";
+            dtpFecNacP.Format = DateTimePickerFormat.Custom;
             dtpFecNacP.Location = new Point(733, 59);
-            dtpFecNacP.MaxDate = new DateTime(2024, 10, 16, 0, 0, 0, 0);
+            dtpFecNacP.MaxDate = new DateTime(8888, 10, 17, 0, 0, 0, 0);
             dtpFecNacP.Name = "dtpFecNacP";
             dtpFecNacP.Size = new Size(208, 27);
             dtpFecNacP.TabIndex = 13;
-            dtpFecNacP.Value = new DateTime(2024, 10, 16, 0, 0, 0, 0);
+            dtpFecNacP.Value = new DateTime(2024, 10, 17, 0, 0, 0, 0);
             // 
             // lblFecNacP
             // 
@@ -222,14 +250,6 @@
             lblFecNacP.TabIndex = 12;
             lblFecNacP.Text = "Fecha de nacimiento";
             // 
-            // txtSexo
-            // 
-            txtSexo.Location = new Point(498, 135);
-            txtSexo.MaxLength = 15;
-            txtSexo.Name = "txtSexo";
-            txtSexo.Size = new Size(212, 27);
-            txtSexo.TabIndex = 11;
-            // 
             // lblSexo
             // 
             lblSexo.AutoSize = true;
@@ -238,6 +258,22 @@
             lblSexo.Size = new Size(41, 20);
             lblSexo.TabIndex = 10;
             lblSexo.Text = "Sexo";
+            // 
+            // txtDNI
+            // 
+            txtDNI.Location = new Point(15, 135);
+            txtDNI.Name = "txtDNI";
+            txtDNI.Size = new Size(212, 27);
+            txtDNI.TabIndex = 5;
+            // 
+            // lblDNIP
+            // 
+            lblDNIP.AutoSize = true;
+            lblDNIP.Location = new Point(15, 110);
+            lblDNIP.Name = "lblDNIP";
+            lblDNIP.Size = new Size(35, 20);
+            lblDNIP.TabIndex = 4;
+            lblDNIP.Text = "DNI";
             // 
             // txtCorreoP
             // 
@@ -272,25 +308,9 @@
             lblTelP.TabIndex = 6;
             lblTelP.Text = "Teléfono";
             // 
-            // txtDNI
-            // 
-            txtDNI.Location = new Point(256, 59);
-            txtDNI.Name = "txtDNI";
-            txtDNI.Size = new Size(212, 27);
-            txtDNI.TabIndex = 5;
-            // 
-            // lblDNIP
-            // 
-            lblDNIP.AutoSize = true;
-            lblDNIP.Location = new Point(256, 34);
-            lblDNIP.Name = "lblDNIP";
-            lblDNIP.Size = new Size(35, 20);
-            lblDNIP.TabIndex = 4;
-            lblDNIP.Text = "DNI";
-            // 
             // txtApeP
             // 
-            txtApeP.Location = new Point(15, 135);
+            txtApeP.Location = new Point(256, 59);
             txtApeP.MaxLength = 50;
             txtApeP.Name = "txtApeP";
             txtApeP.Size = new Size(212, 27);
@@ -299,7 +319,7 @@
             // lblApeP
             // 
             lblApeP.AutoSize = true;
-            lblApeP.Location = new Point(15, 110);
+            lblApeP.Location = new Point(256, 34);
             lblApeP.Name = "lblApeP";
             lblApeP.Size = new Size(66, 20);
             lblApeP.TabIndex = 2;
@@ -330,7 +350,7 @@
             btnRegistrarP.ForeColor = Color.White;
             btnRegistrarP.Image = (Image)resources.GetObject("btnRegistrarP.Image");
             btnRegistrarP.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRegistrarP.Location = new Point(284, 243);
+            btnRegistrarP.Location = new Point(285, 249);
             btnRegistrarP.Name = "btnRegistrarP";
             btnRegistrarP.Size = new Size(173, 37);
             btnRegistrarP.TabIndex = 5;
@@ -338,11 +358,40 @@
             btnRegistrarP.UseVisualStyleBackColor = false;
             btnRegistrarP.Click += btnRegistrarP_Click;
             // 
+            // picSearch
+            // 
+            picSearch.BackColor = Color.FromArgb(33, 32, 43);
+            picSearch.Image = (Image)resources.GetObject("picSearch.Image");
+            picSearch.Location = new Point(1182, 249);
+            picSearch.Name = "picSearch";
+            picSearch.Size = new Size(62, 39);
+            picSearch.SizeMode = PictureBoxSizeMode.CenterImage;
+            picSearch.TabIndex = 6;
+            picSearch.TabStop = false;
+            // 
+            // btnNuevoP
+            // 
+            btnNuevoP.BackColor = Color.FromArgb(33, 32, 43);
+            btnNuevoP.FlatAppearance.BorderSize = 0;
+            btnNuevoP.FlatStyle = FlatStyle.Flat;
+            btnNuevoP.ForeColor = Color.White;
+            btnNuevoP.Image = (Image)resources.GetObject("btnNuevoP.Image");
+            btnNuevoP.ImageAlign = ContentAlignment.MiddleLeft;
+            btnNuevoP.Location = new Point(667, 250);
+            btnNuevoP.Name = "btnNuevoP";
+            btnNuevoP.Size = new Size(173, 37);
+            btnNuevoP.TabIndex = 7;
+            btnNuevoP.Text = "NUEVO";
+            btnNuevoP.UseVisualStyleBackColor = false;
+            btnNuevoP.Click += btnNuevoP_Click;
+            // 
             // frmPaciente
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1282, 603);
+            Controls.Add(btnNuevoP);
+            Controls.Add(picSearch);
             Controls.Add(btnRegistrarP);
             Controls.Add(grpNuevoPac);
             Controls.Add(pnlBuscarP);
@@ -356,12 +405,16 @@
             Name = "frmPaciente";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "PACIENTES";
+            Load += frmPaciente_Load;
             pnlSide.ResumeLayout(false);
             pnlSide.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvPacientes).EndInit();
+            pnlBuscarP.ResumeLayout(false);
+            pnlBuscarP.PerformLayout();
             grpNuevoPac.ResumeLayout(false);
             grpNuevoPac.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picSearch).EndInit();
             ResumeLayout(false);
         }
 
@@ -384,7 +437,6 @@
         private Label lblTelP;
         private TextBox txtDNI;
         private Label lblDNIP;
-        private TextBox txtSexo;
         private Label lblSexo;
         private TextBox txtCorreoP;
         private Label lblCorreoP;
@@ -393,5 +445,9 @@
         private Label lblCoberturaP;
         private ComboBox cboCoberturaP;
         private Button btnRegistrarP;
+        private ComboBox cboSexo;
+        private PictureBox picSearch;
+        private TextBox txtBuscarP;
+        private Button btnNuevoP;
     }
 }
