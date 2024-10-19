@@ -107,7 +107,7 @@ namespace clinicaSePrice
 
             //*******************************************
             // Creamos una instancia Paciente view model 
-            // para selecionar lo que queremos mostrar en la grila
+            // para selecionar lo que queremos mostrar en la grilla
             //******************************************************
             var pacientesVM = listaP.Select(item => new PacienteVM
             {
@@ -122,11 +122,6 @@ namespace clinicaSePrice
                 Cobertura = item.CoberturaPac,
             }).ToList();
 
-            //*********************************************
-            // Implementamos una grilla custom y le pasamos 
-            // el tipo de botón que necesitamos
-            //*********************************************
-
             dgvPacientes.DataSource = pacientesVM;
             // Ocultamos las columnas que no queremos que se vean
             dgvPacientes.Columns["IdPaciente"].Visible = false;
@@ -137,7 +132,7 @@ namespace clinicaSePrice
         private void frmPaciente_Load(object sender, EventArgs e)
         {
             this.ActiveControl = txtBuscarP;
-            // Seteamos el tipo de formulario que vamos a utilizar
+            // Seteamos el tipo de grilla que vamos a utilizar
             dgvPacientes.ImplementarConfiguracion("Solicitar Turno");
             cargarGrilla();
           
