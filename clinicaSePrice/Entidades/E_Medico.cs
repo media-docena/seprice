@@ -8,6 +8,8 @@ namespace clinicaSePrice.Entidades
 {
     public class E_Medico : E_Personal
     {
+        public E_Especialidad? Especialidad { get; set; }
+
         private double _honorario;
 
         public double Honorario

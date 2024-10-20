@@ -35,6 +35,7 @@ namespace clinicaSePrice
 
                     Sesion.Usuario = Convert.ToString(tablaLogin.Rows[0][0]);
                     Sesion.Rol = rolUsu;
+                    Sesion.Correo = correoUsu;
 
                     /*
                      Una vez que tenemos la conexión establecida PASAMOS al Menú PRINCIPAL
