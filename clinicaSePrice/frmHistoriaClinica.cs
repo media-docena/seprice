@@ -115,16 +115,18 @@ namespace clinicaSePrice
             {
                 IdHC = item.IdHC,
                 Paciente = item.Paciente,
+                Nombre = item.Paciente?.Nombre,
+                Apellido = item.Paciente?.Apellido,
+                Edad = item.Paciente?.FecNac != null ? calcularEdad(item.Paciente.FecNac, fechaActual) : 0,
+                DNI = item.Paciente?.DNI ?? "",
                 Alergias = item.Alergias,
                 Medicamentos = item.Medicamentos,
                 Enfermedades = item.Enfermedades,
                 Antecedentes = item.AntecedentesF,
-                Nombre = item.Paciente?.Nombre,
-                Apellido = item.Paciente?.Apellido,
-                Edad = item.Paciente?.FecNac != null ? calcularEdad(item.Paciente.FecNac, fechaActual) : 0,
+                
 
                 /*----------------------------------------------------------------------
-                 * En la línea anterior se verifica que Paciente y FecNac no sean nulos 
+                 * En la línea de edad se verifica que Paciente y FecNac no sean nulos 
                  * antes de llamar a la función calcularEdad. Si Paciente es nulo, se asignará 0 a Edad.
                  * -------------------------------------------------------------------------------------*/
             }).ToList();
@@ -141,12 +143,13 @@ namespace clinicaSePrice
         private void frmHistoriaClinica_Load(object sender, EventArgs e)
         {
             this.ActiveControl = txtBuscarHC;
+            cargarGrilla();
             //*********************************************
             // Implementamos una grilla custom y le pasamos 
             // como parámetro el tipo de botón que necesitamos
             //*********************************************
             dgvHC.ImplementarConfiguracion("Ver más");
-            cargarGrilla();
+            
         }
 
         private void btnNuevaHC_Click(object sender, EventArgs e)

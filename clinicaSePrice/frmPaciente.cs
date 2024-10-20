@@ -132,10 +132,10 @@ namespace clinicaSePrice
         private void frmPaciente_Load(object sender, EventArgs e)
         {
             this.ActiveControl = txtBuscarP;
+            cargarGrilla();
             // Seteamos el tipo de grilla que vamos a utilizar
             dgvPacientes.ImplementarConfiguracion("Solicitar Turno");
-            cargarGrilla();
-          
+            
         }
 
         private void txtBuscarP_TextChanged(object sender, EventArgs e)
