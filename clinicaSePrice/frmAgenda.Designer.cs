@@ -50,10 +50,18 @@
             btnBuscarAgenda = new Button();
             cboMedico = new ComboBox();
             dtgvAgendaDiaria = new DataGridView();
+            idTurno = new DataGridViewTextBoxColumn();
+            inicioTurno = new DataGridViewTextBoxColumn();
+            idPaciente = new DataGridViewTextBoxColumn();
+            nombre = new DataGridViewTextBoxColumn();
+            apellido = new DataGridViewTextBoxColumn();
+            dni = new DataGridViewTextBoxColumn();
+            checkBox = new DataGridViewCheckBoxColumn();
             tabControl1 = new TabControl();
             tabPageAgenda = new TabPage();
             tabPagePago = new TabPage();
             panel2 = new Panel();
+            btnGenerarFactura = new Button();
             pictureBox1 = new PictureBox();
             btnVolver = new Button();
             lblFormaPago = new Label();
@@ -62,13 +70,6 @@
             txtMonto = new TextBox();
             lblMonto = new Label();
             panel3 = new Panel();
-            idTurno = new DataGridViewTextBoxColumn();
-            inicioTurno = new DataGridViewTextBoxColumn();
-            idPaciente = new DataGridViewTextBoxColumn();
-            nombre = new DataGridViewTextBoxColumn();
-            apellido = new DataGridViewTextBoxColumn();
-            dni = new DataGridViewTextBoxColumn();
-            checkBox = new DataGridViewCheckBoxColumn();
             pnlSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picRol).BeginInit();
@@ -342,141 +343,6 @@
             dtgvAgendaDiaria.TabIndex = 4;
             dtgvAgendaDiaria.CellContentClick += dtgvAgendaDiaria_CellContentClick;
             // 
-            // tabControl1
-            // 
-            tabControl1.Controls.Add(tabPageAgenda);
-            tabControl1.Controls.Add(tabPagePago);
-            tabControl1.Location = new Point(303, 138);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(747, 320);
-            tabControl1.TabIndex = 6;
-            // 
-            // tabPageAgenda
-            // 
-            tabPageAgenda.BackColor = Color.White;
-            tabPageAgenda.Controls.Add(dtgvAgendaDiaria);
-            tabPageAgenda.ForeColor = Color.White;
-            tabPageAgenda.Location = new Point(4, 24);
-            tabPageAgenda.Name = "tabPageAgenda";
-            tabPageAgenda.Padding = new Padding(3);
-            tabPageAgenda.Size = new Size(739, 292);
-            tabPageAgenda.TabIndex = 0;
-            // 
-            // tabPagePago
-            // 
-            tabPagePago.BackColor = Color.White;
-            tabPagePago.Controls.Add(panel2);
-            tabPagePago.ForeColor = Color.White;
-            tabPagePago.Location = new Point(4, 24);
-            tabPagePago.Name = "tabPagePago";
-            tabPagePago.Padding = new Padding(3);
-            tabPagePago.Size = new Size(739, 292);
-            tabPagePago.TabIndex = 1;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(pictureBox1);
-            panel2.Controls.Add(btnVolver);
-            panel2.Controls.Add(lblFormaPago);
-            panel2.Controls.Add(cboFormaPago);
-            panel2.Controls.Add(btnConfirmarRegPag);
-            panel2.Controls.Add(txtMonto);
-            panel2.Controls.Add(lblMonto);
-            panel2.Location = new Point(130, 22);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(459, 253);
-            panel2.TabIndex = 23;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(95, 33);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(86, 85);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 27;
-            pictureBox1.TabStop = false;
-            // 
-            // btnVolver
-            // 
-            btnVolver.BackColor = Color.FromArgb(33, 32, 43);
-            btnVolver.FlatAppearance.BorderSize = 0;
-            btnVolver.FlatStyle = FlatStyle.Flat;
-            btnVolver.ForeColor = Color.White;
-            btnVolver.ImageAlign = ContentAlignment.MiddleLeft;
-            btnVolver.Location = new Point(305, 221);
-            btnVolver.Margin = new Padding(3, 2, 3, 2);
-            btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(151, 28);
-            btnVolver.TabIndex = 22;
-            btnVolver.Text = "Volver";
-            btnVolver.UseVisualStyleBackColor = false;
-            btnVolver.Click += btnVolver_Click;
-            // 
-            // lblFormaPago
-            // 
-            lblFormaPago.AutoSize = true;
-            lblFormaPago.BackColor = Color.Transparent;
-            lblFormaPago.ForeColor = Color.Black;
-            lblFormaPago.Location = new Point(187, 77);
-            lblFormaPago.Name = "lblFormaPago";
-            lblFormaPago.Size = new Size(87, 15);
-            lblFormaPago.TabIndex = 26;
-            lblFormaPago.Text = "Forma de Pago";
-            // 
-            // cboFormaPago
-            // 
-            cboFormaPago.FormattingEnabled = true;
-            cboFormaPago.Items.AddRange(new object[] { "Efectivo", "Tarjeta" });
-            cboFormaPago.Location = new Point(187, 95);
-            cboFormaPago.Name = "cboFormaPago";
-            cboFormaPago.Size = new Size(182, 23);
-            cboFormaPago.TabIndex = 25;
-            cboFormaPago.SelectedIndexChanged += cboFormaPago_SelectedIndexChanged;
-            // 
-            // btnConfirmarRegPag
-            // 
-            btnConfirmarRegPag.BackColor = Color.FromArgb(33, 32, 43);
-            btnConfirmarRegPag.FlatAppearance.BorderSize = 0;
-            btnConfirmarRegPag.FlatStyle = FlatStyle.Flat;
-            btnConfirmarRegPag.ForeColor = Color.White;
-            btnConfirmarRegPag.ImageAlign = ContentAlignment.MiddleLeft;
-            btnConfirmarRegPag.Location = new Point(158, 123);
-            btnConfirmarRegPag.Margin = new Padding(3, 2, 3, 2);
-            btnConfirmarRegPag.Name = "btnConfirmarRegPag";
-            btnConfirmarRegPag.Size = new Size(151, 28);
-            btnConfirmarRegPag.TabIndex = 21;
-            btnConfirmarRegPag.Text = "Confirmar Registro";
-            btnConfirmarRegPag.UseVisualStyleBackColor = false;
-            btnConfirmarRegPag.Click += btnConfirmarRegPag_Click;
-            // 
-            // txtMonto
-            // 
-            txtMonto.Location = new Point(187, 51);
-            txtMonto.Name = "txtMonto";
-            txtMonto.ReadOnly = true;
-            txtMonto.Size = new Size(182, 23);
-            txtMonto.TabIndex = 24;
-            // 
-            // lblMonto
-            // 
-            lblMonto.AutoSize = true;
-            lblMonto.BackColor = Color.Transparent;
-            lblMonto.ForeColor = Color.Black;
-            lblMonto.Location = new Point(187, 33);
-            lblMonto.Name = "lblMonto";
-            lblMonto.Size = new Size(43, 15);
-            lblMonto.TabIndex = 23;
-            lblMonto.Text = "Monto";
-            // 
-            // panel3
-            // 
-            panel3.Location = new Point(303, 135);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(747, 27);
-            panel3.TabIndex = 7;
-            // 
             // idTurno
             // 
             idTurno.HeaderText = "ID Turno";
@@ -533,6 +399,158 @@
             checkBox.Name = "checkBox";
             checkBox.Resizable = DataGridViewTriState.False;
             checkBox.Width = 40;
+            // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPageAgenda);
+            tabControl1.Controls.Add(tabPagePago);
+            tabControl1.Location = new Point(303, 138);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(747, 320);
+            tabControl1.TabIndex = 6;
+            // 
+            // tabPageAgenda
+            // 
+            tabPageAgenda.BackColor = Color.White;
+            tabPageAgenda.Controls.Add(dtgvAgendaDiaria);
+            tabPageAgenda.ForeColor = Color.White;
+            tabPageAgenda.Location = new Point(4, 24);
+            tabPageAgenda.Name = "tabPageAgenda";
+            tabPageAgenda.Padding = new Padding(3);
+            tabPageAgenda.Size = new Size(739, 292);
+            tabPageAgenda.TabIndex = 0;
+            // 
+            // tabPagePago
+            // 
+            tabPagePago.BackColor = Color.White;
+            tabPagePago.Controls.Add(panel2);
+            tabPagePago.ForeColor = Color.White;
+            tabPagePago.Location = new Point(4, 24);
+            tabPagePago.Name = "tabPagePago";
+            tabPagePago.Padding = new Padding(3);
+            tabPagePago.Size = new Size(739, 292);
+            tabPagePago.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(btnGenerarFactura);
+            panel2.Controls.Add(pictureBox1);
+            panel2.Controls.Add(btnVolver);
+            panel2.Controls.Add(lblFormaPago);
+            panel2.Controls.Add(cboFormaPago);
+            panel2.Controls.Add(btnConfirmarRegPag);
+            panel2.Controls.Add(txtMonto);
+            panel2.Controls.Add(lblMonto);
+            panel2.Location = new Point(130, 22);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(459, 253);
+            panel2.TabIndex = 23;
+            // 
+            // btnGenerarFactura
+            // 
+            btnGenerarFactura.BackColor = Color.FromArgb(33, 32, 43);
+            btnGenerarFactura.FlatAppearance.BorderSize = 0;
+            btnGenerarFactura.FlatStyle = FlatStyle.Flat;
+            btnGenerarFactura.ForeColor = Color.White;
+            btnGenerarFactura.ImageAlign = ContentAlignment.MiddleLeft;
+            btnGenerarFactura.Location = new Point(158, 177);
+            btnGenerarFactura.Margin = new Padding(3, 2, 3, 2);
+            btnGenerarFactura.Name = "btnGenerarFactura";
+            btnGenerarFactura.Size = new Size(151, 28);
+            btnGenerarFactura.TabIndex = 28;
+            btnGenerarFactura.Text = "Generar Factura";
+            btnGenerarFactura.UseVisualStyleBackColor = false;
+            btnGenerarFactura.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(95, 33);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(86, 85);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 27;
+            pictureBox1.TabStop = false;
+            // 
+            // btnVolver
+            // 
+            btnVolver.BackColor = Color.FromArgb(33, 32, 43);
+            btnVolver.FlatAppearance.BorderSize = 0;
+            btnVolver.FlatStyle = FlatStyle.Flat;
+            btnVolver.ForeColor = Color.White;
+            btnVolver.ImageAlign = ContentAlignment.MiddleLeft;
+            btnVolver.Location = new Point(305, 221);
+            btnVolver.Margin = new Padding(3, 2, 3, 2);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(151, 28);
+            btnVolver.TabIndex = 22;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = false;
+            btnVolver.Click += btnVolver_Click;
+            // 
+            // lblFormaPago
+            // 
+            lblFormaPago.AutoSize = true;
+            lblFormaPago.BackColor = Color.Transparent;
+            lblFormaPago.ForeColor = Color.Black;
+            lblFormaPago.Location = new Point(187, 77);
+            lblFormaPago.Name = "lblFormaPago";
+            lblFormaPago.Size = new Size(87, 15);
+            lblFormaPago.TabIndex = 26;
+            lblFormaPago.Text = "Forma de Pago";
+            // 
+            // cboFormaPago
+            // 
+            cboFormaPago.FormattingEnabled = true;
+            cboFormaPago.Items.AddRange(new object[] { "Efectivo", "Tarjeta" });
+            cboFormaPago.Location = new Point(187, 95);
+            cboFormaPago.Name = "cboFormaPago";
+            cboFormaPago.Size = new Size(182, 23);
+            cboFormaPago.TabIndex = 25;
+            cboFormaPago.SelectedIndexChanged += cboFormaPago_SelectedIndexChanged;
+            // 
+            // btnConfirmarRegPag
+            // 
+            btnConfirmarRegPag.BackColor = Color.FromArgb(33, 32, 43);
+            btnConfirmarRegPag.FlatAppearance.BorderSize = 0;
+            btnConfirmarRegPag.FlatStyle = FlatStyle.Flat;
+            btnConfirmarRegPag.ForeColor = Color.White;
+            btnConfirmarRegPag.ImageAlign = ContentAlignment.MiddleLeft;
+            btnConfirmarRegPag.Location = new Point(158, 134);
+            btnConfirmarRegPag.Margin = new Padding(3, 2, 3, 2);
+            btnConfirmarRegPag.Name = "btnConfirmarRegPag";
+            btnConfirmarRegPag.Size = new Size(151, 28);
+            btnConfirmarRegPag.TabIndex = 21;
+            btnConfirmarRegPag.Text = "Confirmar Registro";
+            btnConfirmarRegPag.UseVisualStyleBackColor = false;
+            btnConfirmarRegPag.Click += btnConfirmarRegPag_Click;
+            // 
+            // txtMonto
+            // 
+            txtMonto.Location = new Point(187, 51);
+            txtMonto.Name = "txtMonto";
+            txtMonto.ReadOnly = true;
+            txtMonto.Size = new Size(182, 23);
+            txtMonto.TabIndex = 24;
+            // 
+            // lblMonto
+            // 
+            lblMonto.AutoSize = true;
+            lblMonto.BackColor = Color.Transparent;
+            lblMonto.ForeColor = Color.Black;
+            lblMonto.Location = new Point(187, 33);
+            lblMonto.Name = "lblMonto";
+            lblMonto.Size = new Size(43, 15);
+            lblMonto.TabIndex = 23;
+            lblMonto.Text = "Monto";
+            // 
+            // panel3
+            // 
+            panel3.Location = new Point(303, 135);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(747, 27);
+            panel3.TabIndex = 7;
             // 
             // frmAgenda
             // 
@@ -606,5 +624,6 @@
         private DataGridViewTextBoxColumn apellido;
         private DataGridViewTextBoxColumn dni;
         private DataGridViewCheckBoxColumn checkBox;
+        private Button btnGenerarFactura;
     }
 }

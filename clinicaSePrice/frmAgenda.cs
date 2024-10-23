@@ -16,6 +16,8 @@ namespace clinicaSePrice
 {
     public partial class frmAgenda : Form
     {
+        private readonly string? _rol = Sesion.Rol;
+
         private int IdMedicoForm = 0;
         private DateTime FechaForm;
         private int IdTurnoForm = 0;
@@ -32,6 +34,23 @@ namespace clinicaSePrice
         private void frmAgenda_Load(object sender, EventArgs e)
         {
             CargarListaMedicos();
+            OcultarAccesos();
+        }
+
+        private void OcultarAccesos()
+        {
+            if (_rol == "Administrador")
+            {
+                btnConfirmarTurno.Visible = true;
+                btnCancelarTurno.Visible = true;
+                btnRegistrarPago.Visible = true;
+            }
+            else
+            {
+                btnConfirmarTurno.Visible = false;
+                btnCancelarTurno.Visible = false;
+                btnRegistrarPago.Visible = false;
+            }
         }
 
         private void CargarListaMedicos()
@@ -153,6 +172,7 @@ namespace clinicaSePrice
                             HonorarioForm = medicoCon.BuscarMontoHonorario(IdMedicoForm);
                             txtMonto.Text = HonorarioForm.ToString();
                         }
+                        else { MessageBox.Show($"No se puede registrar un pago, ya que el turno esta: {EstadoTurnoForm}", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }
                     }
                 }
             }
@@ -178,6 +198,11 @@ namespace clinicaSePrice
                 if (comprobacion == true)
                 {
                     medicoCon.RegistrarPago(IdTurnoForm, IdPacienteForm, FormaPagoForm, HonorarioForm);
+                    btnMenu.Enabled = false;
+                    btnConfirmarRegPag.Visible = false;
+                    btnVolver.Visible = false;
+                    btnGenerarFactura.Visible = true;
+                    MessageBox.Show("Por favor, genere la factura para continuar.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)

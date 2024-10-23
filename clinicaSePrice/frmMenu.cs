@@ -45,10 +45,9 @@ namespace clinicaSePrice
         {
             //*************************************
             // Si el usuario logueado es Admin
-            // ocultamos el acceso a la
-            // funcionalidad de la Historia Clínica
-            // si es Medico, se oculta el acceso a
-            // Turnos y Honorarios
+            // ocultamos el acceso a la funcionalidad
+            // de la Historia Clínica si es Medico,
+            // se oculta el acceso a Honorarios.
             //**************************************
             if (_rol == "Administrador")
             {
@@ -56,7 +55,6 @@ namespace clinicaSePrice
             }
             else
             {
-                btnTurnos.Visible = false;
                 btnHonorarios.Visible = false;
             }
         }
