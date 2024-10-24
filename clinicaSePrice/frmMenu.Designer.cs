@@ -107,6 +107,7 @@
             btnHC.TabIndex = 6;
             btnHC.Text = "Historia Clínica";
             btnHC.UseVisualStyleBackColor = true;
+            btnHC.Click += btnHC_Click;
             // 
             // btnHonorarios
             // 
