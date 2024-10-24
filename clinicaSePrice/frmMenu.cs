@@ -32,7 +32,7 @@ namespace clinicaSePrice
             // al cargar el formulario del Menú
             //**********************************************
             initSesionUsu();
-            ocultarHC();
+            ocultarAccesos();
         }
 
         private void initSesionUsu()
@@ -41,15 +41,21 @@ namespace clinicaSePrice
             lblRol.Text = _rol;
         }
 
-        private void ocultarHC()
+        private void ocultarAccesos()
         {
             //*************************************
             // Si el usuario logueado es Admin
-            // ocultamos el acceso a la
-            // funcionalidad de la Historia Clínica
+            // ocultamos el acceso a la funcionalidad
+            // de la Historia Clínica si es Medico,
+            // se oculta el acceso a Honorarios.
             //**************************************
-            if (_rol == "Administrador") {
+            if (_rol == "Administrador")
+            {
                 btnHC.Visible = false;
+            }
+            else
+            {
+                btnHonorarios.Visible = false;
             }
         }
 
@@ -61,6 +67,18 @@ namespace clinicaSePrice
             menu.Show();
             this.Hide();
         }
+
+        private void btnAgenda_Click(object sender, EventArgs e)
+        {
+            frmAgenda form = new frmAgenda();
+            form.Show();
+            this.Hide();
+        }
+
+        private void btnHonorarios_Click(object sender, EventArgs e)
+        {
+            frmHonorario form = new frmHonorario();
+            form.Show();
 
         private void btnHC_Click(object sender, EventArgs e)
         {

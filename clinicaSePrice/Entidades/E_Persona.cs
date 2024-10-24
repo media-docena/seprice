@@ -15,5 +15,10 @@ namespace clinicaSePrice.Entidades
         public required string Telefono { get; set; }
         public required string Correo { get; set; }
 
+        // Metodo para concatenar nombre y apellido
+        public string NombreCompleto
+        {
+            get { return $"{Nombre} {Apellido}"; }
+        }
     }
 }
