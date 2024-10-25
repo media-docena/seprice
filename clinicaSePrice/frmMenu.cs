@@ -79,7 +79,9 @@ namespace clinicaSePrice
         {
             frmHonorario form = new frmHonorario();
             form.Show();
+            this.Close();
 
+        }
         private void btnHC_Click(object sender, EventArgs e)
         {
             // Pasamos al formulario de la hist. clínica

@@ -153,9 +153,11 @@ namespace clinicaSePrice
             //****************************************************
             if (dgvPacientes.Columns[e.ColumnIndex].Name == "ColumnaAccion") {
                 var pacienteSeleccionado = (PacienteVM)dgvPacientes.CurrentRow.DataBoundItem;
-                // TODO: Pasar paciente seleccionado al formulario de turnos
-                MessageBox.Show($"Los datos del paciente son id: {pacienteSeleccionado.IdPaciente} " +
-                    $"y su nombre: {pacienteSeleccionado.Nombre}", "AVISO DEL SISTEMA", MessageBoxButtons.OK);
+                
+                frmTurno frmTurno = new frmTurno { Paciente = pacienteSeleccionado };
+                
+                frmTurno.Show();
+                this.Close();
             }
         }
 
