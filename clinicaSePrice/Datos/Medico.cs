@@ -422,5 +422,118 @@ namespace clinicaSePrice.Datos
             }
             return ListaHonorarios;
         }
+
+        public List<E_Medico> listarMedicos(int especialidad)
+        {
+            var listaMedicos = new List<E_Medico>();
+
+            MySqlConnection sqlCon = new MySqlConnection();
+            try {
+
+                sqlCon = Conexion.getInstancia().CrearConexion();
+                MySqlCommand comando = new MySqlCommand("sp_listarMedicosSegunEspe", sqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("especialidad", MySqlDbType.Int32).Value = especialidad;
+                sqlCon.Open();
+
+                MySqlDataReader reader;
+                reader = comando.ExecuteReader();
+
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+
+                        var medico = new E_Medico
+                        {
+                            Id = reader.GetInt32(0),
+                            Especialidad = new E_Especialidad
+                            {
+                                IdEspecialidad = reader.GetInt32(1),
+                                Nombre = reader.GetString(2),
+                            },
+                            Nombre = reader.GetString(3),
+                            Apellido = reader.GetString(4),
+                            DNI = reader.GetString(5),
+                            FecNac = DateOnly.FromDateTime(reader.GetDateTime(6)),
+                            Telefono = reader.GetString(7),
+                            Correo = reader.GetString(8),
+                            Honorario = reader.GetFloat(9),
+                        };
+
+                        listaMedicos.Add(medico);
+                    }
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+            finally {
+                if (sqlCon.State == ConnectionState.Open) {
+                    sqlCon.Close();
+                }
+            }
+            return listaMedicos;
+        }
+
+        // Obtiene la lista de turnos disponibles según médico y fecha
+        public List<E_Agenda> listarTurnos(int idMedico, DateOnly fecha) 
+        {
+            var listaTurnos = new List<E_Agenda>();
+            MySqlConnection sqlCon = new MySqlConnection();
+            try {
+
+                sqlCon = Conexion.getInstancia().CrearConexion();
+                MySqlCommand comando = new MySqlCommand("sp_listarTurnosDisponibles", sqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("idMedico", MySqlDbType.Int32).Value = idMedico;
+                comando.Parameters.Add("fecha", MySqlDbType.Date).Value = fecha;
+                sqlCon.Open();
+
+                MySqlDataReader reader;
+                reader = comando.ExecuteReader();
+
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+                        // Instanciamos cada turno disponible en la agenda médica
+                        var turno = new E_Agenda
+                        {
+                            Id = reader.GetInt32(0),
+                            Medico = new E_Medico
+                            {
+                                Id = reader.GetInt32(1),
+                                Especialidad = new E_Especialidad
+                                {
+                                    IdEspecialidad = reader.GetInt32(2),
+                                    Nombre = reader.GetString(3),
+                                },
+                                Nombre = reader.GetString(4),
+                                Apellido = reader.GetString(5),
+                                DNI = reader.GetString(6),
+                                FecNac = DateOnly.FromDateTime(reader.GetDateTime(7)),
+                                Telefono = reader.GetString(8),
+                                Correo = reader.GetString(9),
+                                Honorario = reader.GetFloat(10),
+                            },
+                            Fecha = DateOnly.FromDateTime(reader.GetDateTime(11)),
+                            Inicio = TimeOnly.FromTimeSpan(reader.GetTimeSpan(12)),
+                            Fin = TimeOnly.FromTimeSpan(reader.GetTimeSpan(13)),
+                            Disponible = Convert.ToBoolean(reader.GetInt32(14)),
+                        };
+
+                        listaTurnos.Add(turno);
+                    }
+                }
+                
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+            finally {
+                if (sqlCon.State == ConnectionState.Open) {
+                    sqlCon.Close();
+                }
+            }
+            return listaTurnos;
+
+        }
     }
 }

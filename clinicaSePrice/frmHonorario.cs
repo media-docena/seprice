@@ -35,6 +35,7 @@ namespace clinicaSePrice
                 foreach (var item in listaHonorarios)
                 {
                     dtgvHonorarios.Rows.Add(item.Mes, item.Anio, item.IdMedico, item.Nombre, item.Apellido, item.Especialidad, item.CantConsultas, item.HonorarioTotal);
+                    dtgvHonorarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
             }
             else { MessageBox.Show("No hay datos para mostrar."); }
