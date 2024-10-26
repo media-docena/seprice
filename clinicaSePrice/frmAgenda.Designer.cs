@@ -69,7 +69,23 @@
             btnConfirmarRegPag = new Button();
             txtMonto = new TextBox();
             lblMonto = new Label();
+            tabPageComprobante = new TabPage();
+            panelBordeComprobante = new Panel();
+            btnImprComprobante = new Button();
+            labelDataApellido = new Label();
+            labelDataFecha = new Label();
+            LabelClinicaSePrice = new Label();
+            labelConcepto = new Label();
+            labelMoneda = new Label();
+            labelMonto = new Label();
+            labelSuma = new Label();
+            labelDataNombre = new Label();
+            labelRecibiDe = new Label();
+            pictureBoxLogo = new PictureBox();
+            labelFecha = new Label();
+            labelTituloComprobante = new Label();
             panel3 = new Panel();
+            printDocumentComprobante = new System.Drawing.Printing.PrintDocument();
             pnlSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picRol).BeginInit();
@@ -80,6 +96,9 @@
             tabPagePago.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            tabPageComprobante.SuspendLayout();
+            panelBordeComprobante.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             SuspendLayout();
             // 
             // pnlSide
@@ -404,6 +423,7 @@
             // 
             tabControl1.Controls.Add(tabPageAgenda);
             tabControl1.Controls.Add(tabPagePago);
+            tabControl1.Controls.Add(tabPageComprobante);
             tabControl1.Location = new Point(303, 138);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -462,6 +482,7 @@
             btnGenerarFactura.Text = "Generar Factura";
             btnGenerarFactura.UseVisualStyleBackColor = false;
             btnGenerarFactura.Visible = false;
+            btnGenerarFactura.Click += btnGenerarFactura_Click;
             // 
             // pictureBox1
             // 
@@ -545,11 +566,182 @@
             lblMonto.TabIndex = 23;
             lblMonto.Text = "Monto";
             // 
+            // tabPageComprobante
+            // 
+            tabPageComprobante.Controls.Add(panelBordeComprobante);
+            tabPageComprobante.Location = new Point(4, 24);
+            tabPageComprobante.Name = "tabPageComprobante";
+            tabPageComprobante.Padding = new Padding(3);
+            tabPageComprobante.Size = new Size(739, 292);
+            tabPageComprobante.TabIndex = 2;
+            tabPageComprobante.UseVisualStyleBackColor = true;
+            // 
+            // panelBordeComprobante
+            // 
+            panelBordeComprobante.BorderStyle = BorderStyle.FixedSingle;
+            panelBordeComprobante.Controls.Add(btnImprComprobante);
+            panelBordeComprobante.Controls.Add(labelDataApellido);
+            panelBordeComprobante.Controls.Add(labelDataFecha);
+            panelBordeComprobante.Controls.Add(LabelClinicaSePrice);
+            panelBordeComprobante.Controls.Add(labelConcepto);
+            panelBordeComprobante.Controls.Add(labelMoneda);
+            panelBordeComprobante.Controls.Add(labelMonto);
+            panelBordeComprobante.Controls.Add(labelSuma);
+            panelBordeComprobante.Controls.Add(labelDataNombre);
+            panelBordeComprobante.Controls.Add(labelRecibiDe);
+            panelBordeComprobante.Controls.Add(pictureBoxLogo);
+            panelBordeComprobante.Controls.Add(labelFecha);
+            panelBordeComprobante.Controls.Add(labelTituloComprobante);
+            panelBordeComprobante.Location = new Point(149, 9);
+            panelBordeComprobante.Name = "panelBordeComprobante";
+            panelBordeComprobante.Size = new Size(487, 267);
+            panelBordeComprobante.TabIndex = 4;
+            // 
+            // btnImprComprobante
+            // 
+            btnImprComprobante.BackColor = Color.FromArgb(33, 32, 43);
+            btnImprComprobante.BackgroundImageLayout = ImageLayout.None;
+            btnImprComprobante.FlatStyle = FlatStyle.Popup;
+            btnImprComprobante.ForeColor = SystemColors.InactiveBorder;
+            btnImprComprobante.Location = new Point(206, 222);
+            btnImprComprobante.Name = "btnImprComprobante";
+            btnImprComprobante.Size = new Size(75, 23);
+            btnImprComprobante.TabIndex = 12;
+            btnImprComprobante.Text = "IMPRIMIR";
+            btnImprComprobante.UseVisualStyleBackColor = false;
+            btnImprComprobante.Click += btnImprComprobante_Click;
+            // 
+            // labelDataApellido
+            // 
+            labelDataApellido.AutoSize = true;
+            labelDataApellido.Font = new Font("Segoe UI", 11.25F);
+            labelDataApellido.Location = new Point(291, 91);
+            labelDataApellido.Name = "labelDataApellido";
+            labelDataApellido.Size = new Size(66, 20);
+            labelDataApellido.TabIndex = 11;
+            labelDataApellido.Text = "Apellido";
+            // 
+            // labelDataFecha
+            // 
+            labelDataFecha.AutoSize = true;
+            labelDataFecha.Font = new Font("Segoe UI", 11.25F);
+            labelDataFecha.Location = new Point(206, 57);
+            labelDataFecha.Name = "labelDataFecha";
+            labelDataFecha.Size = new Size(45, 20);
+            labelDataFecha.TabIndex = 10;
+            labelDataFecha.Text = "fecha";
+            // 
+            // LabelClinicaSePrice
+            // 
+            LabelClinicaSePrice.AutoSize = true;
+            LabelClinicaSePrice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LabelClinicaSePrice.Location = new Point(15, 125);
+            LabelClinicaSePrice.Name = "LabelClinicaSePrice";
+            LabelClinicaSePrice.Size = new Size(111, 21);
+            LabelClinicaSePrice.TabIndex = 9;
+            LabelClinicaSePrice.Text = "Clínica SePrice";
+            // 
+            // labelConcepto
+            // 
+            labelConcepto.AutoSize = true;
+            labelConcepto.Font = new Font("Segoe UI", 11.25F);
+            labelConcepto.Location = new Point(146, 160);
+            labelConcepto.Name = "labelConcepto";
+            labelConcepto.Size = new Size(297, 20);
+            labelConcepto.TabIndex = 8;
+            labelConcepto.Text = "En concepto de: Abono de consulta médica";
+            // 
+            // labelMoneda
+            // 
+            labelMoneda.AutoSize = true;
+            labelMoneda.Font = new Font("Segoe UI", 11.25F);
+            labelMoneda.Location = new Point(291, 126);
+            labelMoneda.Name = "labelMoneda";
+            labelMoneda.Size = new Size(121, 20);
+            labelMoneda.TabIndex = 7;
+            labelMoneda.Text = "Pesos Argentinos";
+            // 
+            // labelMonto
+            // 
+            labelMonto.AutoSize = true;
+            labelMonto.Font = new Font("Segoe UI", 11.25F);
+            labelMonto.Location = new Point(232, 126);
+            labelMonto.Name = "labelMonto";
+            labelMonto.Size = new Size(53, 20);
+            labelMonto.TabIndex = 6;
+            labelMonto.Text = "Monto";
+            // 
+            // labelSuma
+            // 
+            labelSuma.AutoSize = true;
+            labelSuma.Font = new Font("Segoe UI", 11.25F);
+            labelSuma.Location = new Point(146, 126);
+            labelSuma.Name = "labelSuma";
+            labelSuma.Size = new Size(84, 20);
+            labelSuma.TabIndex = 5;
+            labelSuma.Text = "La suma de";
+            labelSuma.Click += label5_Click;
+            // 
+            // labelDataNombre
+            // 
+            labelDataNombre.AutoSize = true;
+            labelDataNombre.Font = new Font("Segoe UI", 11.25F);
+            labelDataNombre.Location = new Point(221, 91);
+            labelDataNombre.Name = "labelDataNombre";
+            labelDataNombre.Size = new Size(64, 20);
+            labelDataNombre.TabIndex = 4;
+            labelDataNombre.Text = "Nombre";
+            // 
+            // labelRecibiDe
+            // 
+            labelRecibiDe.AutoSize = true;
+            labelRecibiDe.Font = new Font("Segoe UI", 11.25F);
+            labelRecibiDe.Location = new Point(146, 91);
+            labelRecibiDe.Name = "labelRecibiDe";
+            labelRecibiDe.Size = new Size(75, 20);
+            labelRecibiDe.TabIndex = 3;
+            labelRecibiDe.Text = "Recibí de ";
+            labelRecibiDe.Click += label3_Click;
+            // 
+            // pictureBoxLogo
+            // 
+            pictureBoxLogo.ErrorImage = (Image)resources.GetObject("pictureBoxLogo.ErrorImage");
+            pictureBoxLogo.Image = (Image)resources.GetObject("pictureBoxLogo.Image");
+            pictureBoxLogo.InitialImage = (Image)resources.GetObject("pictureBoxLogo.InitialImage");
+            pictureBoxLogo.Location = new Point(15, 53);
+            pictureBoxLogo.Name = "pictureBoxLogo";
+            pictureBoxLogo.Size = new Size(107, 69);
+            pictureBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxLogo.TabIndex = 0;
+            pictureBoxLogo.TabStop = false;
+            // 
+            // labelFecha
+            // 
+            labelFecha.AutoSize = true;
+            labelFecha.Font = new Font("Segoe UI", 11.25F);
+            labelFecha.Location = new Point(146, 57);
+            labelFecha.Name = "labelFecha";
+            labelFecha.Size = new Size(54, 20);
+            labelFecha.TabIndex = 2;
+            labelFecha.Text = "Fecha: ";
+            labelFecha.Click += label2_Click;
+            // 
+            // labelTituloComprobante
+            // 
+            labelTituloComprobante.AutoSize = true;
+            labelTituloComprobante.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelTituloComprobante.Location = new Point(172, 12);
+            labelTituloComprobante.Name = "labelTituloComprobante";
+            labelTituloComprobante.Size = new Size(203, 21);
+            labelTituloComprobante.TabIndex = 1;
+            labelTituloComprobante.Text = "COMPROBANTE DE PAGO";
+            labelTituloComprobante.Click += label1_Click;
+            // 
             // panel3
             // 
-            panel3.Location = new Point(303, 135);
+            panel3.Location = new Point(299, 138);
             panel3.Name = "panel3";
-            panel3.Size = new Size(747, 27);
+            panel3.Size = new Size(751, 27);
             panel3.TabIndex = 7;
             // 
             // frmAgenda
@@ -581,6 +773,10 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            tabPageComprobante.ResumeLayout(false);
+            panelBordeComprobante.ResumeLayout(false);
+            panelBordeComprobante.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
             ResumeLayout(false);
         }
 
@@ -599,7 +795,7 @@
         private Label lblFecAgenda;
         private Label lblMedico;
         private Button btnBuscarAgenda;
-        private Button button1;
+        private Button btnImprComprobante;
         private Button btnConfirmarTurno;
         private Button btnRegistrarPago;
         private Button btnCancelarTurno;
@@ -625,5 +821,21 @@
         private DataGridViewTextBoxColumn dni;
         private DataGridViewCheckBoxColumn checkBox;
         private Button btnGenerarFactura;
+        private TabPage tabPageComprobante;
+        private Label labelTituloComprobante;
+        private PictureBox pictureBoxLogo;
+        private Label labelFecha;
+        private Label labelRecibiDe;
+        private Panel panelBordeComprobante;
+        private Label labelSuma;
+        private Label labelDataNombre;
+        private Label labelDataFecha;
+        private Label LabelClinicaSePrice;
+        private Label labelConcepto;
+        private Label labelMoneda;
+        private Label labelMonto;
+        private Label labelDataApellido;
+        private System.Drawing.Printing.PrintDocument printDocumentComprobante;
+        private Label labelDataFormaPago;
     }
 }

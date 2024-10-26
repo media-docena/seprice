@@ -79,13 +79,14 @@ namespace clinicaSePrice
         {
             frmHonorario form = new frmHonorario();
             form.Show();
-
+        }
         private void btnHC_Click(object sender, EventArgs e)
         {
-            // Pasamos al formulario de la hist. clínica
-            frmHistoriaClinica histClinica = new frmHistoriaClinica();
-            histClinica.Show();
-            this.Hide();
+                // Pasamos al formulario de la hist. clínica
+                frmHistoriaClinica histClinica = new frmHistoriaClinica();
+                histClinica.Show();
+                this.Hide();
         }
+        
     }
 }

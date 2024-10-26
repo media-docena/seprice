@@ -422,5 +422,41 @@ namespace clinicaSePrice.Datos
             }
             return ListaHonorarios;
         }
+
+        internal Paciente ObtenerPacientePorId(DataGridViewTextBoxColumn idPaciente)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Paciente ObtenerPacientePorId(int idPaciente)
+        {
+            Paciente paciente = null;
+
+            //obtener paciente de la base de datos
+            MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion() ;
+            {
+            
+                sqlCon.Open();
+                var command = new MySqlCommand("SELECT * FROM paciente WHERE IdPaciente = @id", sqlCon);
+                command.Parameters.AddWithValue("@id", idPaciente);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        paciente = new Paciente
+                        {
+                            Id = reader.GetInt32("IdPaciente"),
+                            Nombre = reader.GetString("NomPac"),
+                            Apellido = reader.GetString("ApePac"),
+                            
+                        };
+                    }
+                }
+            }
+
+            return paciente;
+        }
+
     }
 }

@@ -1,12 +1,14 @@
 ﻿using clinicaSePrice.Datos;
 using clinicaSePrice.Entidades;
 using MySql.Data.MySqlClient;
+using Mysqlx.Cursor;
 using Org.BouncyCastle.Asn1.Cmp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -217,5 +219,101 @@ namespace clinicaSePrice
             form.Show();
             this.Close();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void generarComprobante()
+        {
+            if (IdTurnoForm != 0)
+            {
+                try
+                {
+                    // Crear instancia de Medico para obtener datos del paciente
+
+                    Medico medicoCon = new Medico();
+                    var paciente = medicoCon.ObtenerPacientePorId(IdPacienteForm);
+
+                    // Asignar valores a los controles de comprobante
+                    labelDataFecha.Text = FechaForm.ToShortDateString();
+                    labelDataNombre.Text = paciente.Nombre?.ToString() ?? "N/A";
+                    labelDataApellido.Text = paciente.Apellido?.ToString() ?? "N/A";
+                    labelMonto.Text = HonorarioForm.ToString("F2");
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al generar comprobante: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un turno para generar el comprobante.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+
+        private void btnGenerarFactura_Click(object sender, EventArgs e)
+        {
+            generarComprobante();
+            tabControl1.SelectedTab = tabPageComprobante;
+
+        }
+
+       
+        private void printDocumentComprobante_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Control controlSeleccion = tabPageComprobante;
+
+            int ancho = controlSeleccion.Width;
+            int alto = controlSeleccion.Height;
+            Rectangle bounds = new Rectangle(0, 0, ancho, alto);
+            Bitmap img = new Bitmap(ancho, alto);
+            controlSeleccion.DrawToBitmap(img, bounds);
+            Point p = new Point(100, 100);
+            e.Graphics.DrawImage(img, p);
+
+
+        }
+
+
+        private void btnImprComprobante_Click(object sender, EventArgs e)
+        {
+            btnImprComprobante.Visible = false;
+            // creamos los objetos para la impresion
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += new PrintPageEventHandler(printDocumentComprobante_PrintPage);
+            pd.Print();
+            btnImprComprobante.Visible = true;
+
+            MessageBox.Show("Operación existosa", "AVISO DEL SISTEMA",
+            MessageBoxButtons.OK, MessageBoxIcon.Information);
+            frmMenu principal = new frmMenu();
+            principal.Show();
+            this.Close();
+
+        }
     }
 }
+ 
+
+

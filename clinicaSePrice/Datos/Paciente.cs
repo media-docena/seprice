@@ -12,6 +12,10 @@ namespace clinicaSePrice.Datos
 {
     public class Paciente
     {
+        public object Nombre { get; internal set; }
+        public int Id { get; internal set; }
+        public string Apellido { get; internal set; }
+
         public string NuevoPaciente(E_Paciente paciente) {
             string salida;
 
@@ -101,5 +105,5 @@ namespace clinicaSePrice.Datos
             }
             return listaPacientes;
         }
-    }
+    } 
 }
