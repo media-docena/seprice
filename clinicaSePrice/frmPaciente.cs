@@ -56,7 +56,7 @@ namespace clinicaSePrice
         {
             if (faltanCampos()) {
 
-                MessageBox.Show("TODOS LOS CAMPOS SON REQUERIDOS", "AVISO DEL SISTEMA", MessageBoxButtons.OK,
+                MessageBox.Show("Todos los campos son requeridos", "AVISO DEL SISTEMA", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
 
             }
@@ -82,12 +82,12 @@ namespace clinicaSePrice
 
 
                 if (respuesta.Length > 0) {
-                    MessageBox.Show("EL PACIENTE YA EXISTE", "AVISO DEL SISTEMA", MessageBoxButtons.OK,
+                    MessageBox.Show("El paciente ya existe", "AVISO DEL SISTEMA", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                     limpiarCasillas();
                 }
                 else {
-                    MessageBox.Show("REGISTRO EXITOSO!!", "AVISO DEL SISTEMA",
+                    MessageBox.Show("Registro exitoso!!", "AVISO DEL SISTEMA",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                     limpiarCasillas();
                 }
