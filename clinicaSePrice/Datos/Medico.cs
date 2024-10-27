@@ -535,5 +535,42 @@ namespace clinicaSePrice.Datos
             return listaTurnos;
 
         }
+       
+
+        public E_Paciente ObtenerPacientePorId(int idPaciente)
+        {
+            E_Paciente paciente = null;
+
+            //obtener paciente de la base de datos
+            MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
+            {
+
+                sqlCon.Open();
+                var command = new MySqlCommand("SELECT * FROM paciente WHERE IdPaciente = @id", sqlCon);
+                command.Parameters.AddWithValue("@id", idPaciente);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        paciente = new E_Paciente
+                        {
+                            IdPaciente = reader.GetInt32(0),
+                            Nombre = reader.GetString(1),
+                            Apellido = reader.GetString(2),
+                            DNI = reader.GetString(3),
+                            FecNac = DateOnly.FromDateTime(reader.GetDateTime(4)),
+                            Telefono = reader.GetString(5),
+                            Correo = reader.GetString(6),
+                            SexoPac = reader.GetString(7),
+                            CoberturaPac = Convert.ToBoolean(reader.GetInt32(8))
+                        };
+                    }
+                }
+            }
+
+            return paciente;
+        }
+
     }
 }
