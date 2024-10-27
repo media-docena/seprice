@@ -69,7 +69,23 @@
             btnConfirmarRegPag = new Button();
             txtMonto = new TextBox();
             lblMonto = new Label();
+            tabPageComprobante = new TabPage();
+            panelBordeComprobante = new Panel();
+            btnImprComprobante = new Button();
+            label9 = new Label();
+            label8 = new Label();
+            labelMonto = new Label();
+            label6 = new Label();
+            labelDataApellido = new Label();
+            labelDataNombre = new Label();
+            label3 = new Label();
+            labelDataFecha = new Label();
+            label1 = new Label();
+            label = new Label();
+            labelTituloComprobante = new Label();
+            pictureBox2 = new PictureBox();
             panel3 = new Panel();
+            printDocumentComprobante = new System.Drawing.Printing.PrintDocument();
             pnlSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picRol).BeginInit();
@@ -80,6 +96,9 @@
             tabPagePago.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            tabPageComprobante.SuspendLayout();
+            panelBordeComprobante.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // pnlSide
@@ -404,6 +423,7 @@
             // 
             tabControl1.Controls.Add(tabPageAgenda);
             tabControl1.Controls.Add(tabPagePago);
+            tabControl1.Controls.Add(tabPageComprobante);
             tabControl1.Location = new Point(303, 138);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -462,6 +482,7 @@
             btnGenerarFactura.Text = "Generar Factura";
             btnGenerarFactura.UseVisualStyleBackColor = false;
             btnGenerarFactura.Visible = false;
+            btnGenerarFactura.Click += btnGenerarFactura_Click;
             // 
             // pictureBox1
             // 
@@ -545,12 +566,180 @@
             lblMonto.TabIndex = 23;
             lblMonto.Text = "Monto";
             // 
+            // tabPageComprobante
+            // 
+            tabPageComprobante.Controls.Add(panelBordeComprobante);
+            tabPageComprobante.Location = new Point(4, 24);
+            tabPageComprobante.Name = "tabPageComprobante";
+            tabPageComprobante.Padding = new Padding(3);
+            tabPageComprobante.Size = new Size(739, 292);
+            tabPageComprobante.TabIndex = 2;
+            tabPageComprobante.UseVisualStyleBackColor = true;
+            // 
+            // panelBordeComprobante
+            // 
+            panelBordeComprobante.Controls.Add(btnImprComprobante);
+            panelBordeComprobante.Controls.Add(label9);
+            panelBordeComprobante.Controls.Add(label8);
+            panelBordeComprobante.Controls.Add(labelMonto);
+            panelBordeComprobante.Controls.Add(label6);
+            panelBordeComprobante.Controls.Add(labelDataApellido);
+            panelBordeComprobante.Controls.Add(labelDataNombre);
+            panelBordeComprobante.Controls.Add(label3);
+            panelBordeComprobante.Controls.Add(labelDataFecha);
+            panelBordeComprobante.Controls.Add(label1);
+            panelBordeComprobante.Controls.Add(label);
+            panelBordeComprobante.Controls.Add(labelTituloComprobante);
+            panelBordeComprobante.Controls.Add(pictureBox2);
+            panelBordeComprobante.Location = new Point(121, 23);
+            panelBordeComprobante.Name = "panelBordeComprobante";
+            panelBordeComprobante.Size = new Size(485, 252);
+            panelBordeComprobante.TabIndex = 0;
+            // 
+            // btnImprComprobante
+            // 
+            btnImprComprobante.BackColor = Color.FromArgb(33, 32, 43);
+            btnImprComprobante.FlatAppearance.BorderSize = 0;
+            btnImprComprobante.FlatStyle = FlatStyle.Flat;
+            btnImprComprobante.ForeColor = SystemColors.ButtonHighlight;
+            btnImprComprobante.Location = new Point(243, 208);
+            btnImprComprobante.Name = "btnImprComprobante";
+            btnImprComprobante.Size = new Size(75, 23);
+            btnImprComprobante.TabIndex = 12;
+            btnImprComprobante.Text = "IMPRIMIR";
+            btnImprComprobante.UseVisualStyleBackColor = false;
+            btnImprComprobante.Click += btnImprComprobante_Click_1;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.Location = new Point(162, 167);
+            label9.Name = "label9";
+            label9.Size = new Size(297, 20);
+            label9.TabIndex = 11;
+            label9.Text = "En concepto de: Abono de consulta médica";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Location = new Point(317, 132);
+            label8.Name = "label8";
+            label8.Size = new Size(121, 20);
+            label8.TabIndex = 10;
+            label8.Text = "Pesos Argentinos";
+            // 
+            // labelMonto
+            // 
+            labelMonto.AutoSize = true;
+            labelMonto.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelMonto.Location = new Point(258, 132);
+            labelMonto.Name = "labelMonto";
+            labelMonto.Size = new Size(53, 20);
+            labelMonto.TabIndex = 9;
+            labelMonto.Text = "Monto";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Location = new Point(161, 132);
+            label6.Name = "label6";
+            label6.Size = new Size(91, 20);
+            label6.TabIndex = 8;
+            label6.Text = "La suma de: ";
+            // 
+            // labelDataApellido
+            // 
+            labelDataApellido.AutoSize = true;
+            labelDataApellido.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelDataApellido.Location = new Point(317, 96);
+            labelDataApellido.Name = "labelDataApellido";
+            labelDataApellido.Size = new Size(66, 20);
+            labelDataApellido.TabIndex = 7;
+            labelDataApellido.Text = "Apellido";
+            // 
+            // labelDataNombre
+            // 
+            labelDataNombre.AutoSize = true;
+            labelDataNombre.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelDataNombre.Location = new Point(243, 96);
+            labelDataNombre.Name = "labelDataNombre";
+            labelDataNombre.Size = new Size(64, 20);
+            labelDataNombre.TabIndex = 6;
+            labelDataNombre.Text = "Nombre";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(162, 96);
+            label3.Name = "label3";
+            label3.Size = new Size(78, 20);
+            label3.TabIndex = 5;
+            label3.Text = "Recibi de: ";
+            // 
+            // labelDataFecha
+            // 
+            labelDataFecha.AutoSize = true;
+            labelDataFecha.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelDataFecha.Location = new Point(218, 62);
+            labelDataFecha.Name = "labelDataFecha";
+            labelDataFecha.Size = new Size(47, 20);
+            labelDataFecha.TabIndex = 4;
+            labelDataFecha.Text = "Fecha";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(161, 62);
+            label1.Name = "label1";
+            label1.Size = new Size(54, 20);
+            label1.TabIndex = 3;
+            label1.Text = "Fecha: ";
+            // 
+            // label
+            // 
+            label.AutoSize = true;
+            label.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label.Location = new Point(23, 119);
+            label.Name = "label";
+            label.Size = new Size(105, 20);
+            label.TabIndex = 2;
+            label.Text = "Clinica SePrice";
+            // 
+            // labelTituloComprobante
+            // 
+            labelTituloComprobante.AutoSize = true;
+            labelTituloComprobante.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelTituloComprobante.Location = new Point(186, 22);
+            labelTituloComprobante.Name = "labelTituloComprobante";
+            labelTituloComprobante.Size = new Size(203, 21);
+            labelTituloComprobante.TabIndex = 1;
+            labelTituloComprobante.Text = "COMPROBANTE DE PAGO";
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(28, 38);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(100, 78);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 0;
+            pictureBox2.TabStop = false;
+            // 
             // panel3
             // 
-            panel3.Location = new Point(303, 135);
+            panel3.Location = new Point(303, 138);
             panel3.Name = "panel3";
             panel3.Size = new Size(747, 27);
             panel3.TabIndex = 7;
+            // 
+            // printDocumentComprobante
+            // 
+            printDocumentComprobante.PrintPage += printDocumentComprobante_PrintPage;
             // 
             // frmAgenda
             // 
@@ -581,6 +770,10 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            tabPageComprobante.ResumeLayout(false);
+            panelBordeComprobante.ResumeLayout(false);
+            panelBordeComprobante.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -599,7 +792,7 @@
         private Label lblFecAgenda;
         private Label lblMedico;
         private Button btnBuscarAgenda;
-        private Button button1;
+        private Button btnImprComprobante;
         private Button btnConfirmarTurno;
         private Button btnRegistrarPago;
         private Button btnCancelarTurno;
@@ -625,5 +818,20 @@
         private DataGridViewTextBoxColumn dni;
         private DataGridViewCheckBoxColumn checkBox;
         private Button btnGenerarFactura;
+        private TabPage tabPageComprobante;
+        private Panel panelBordeComprobante;
+        private Label labelTituloComprobante;
+        private PictureBox pictureBox2;
+        private Label label;
+        private Label label9;
+        private Label label8;
+        private Label labelMonto;
+        private Label label6;
+        private Label labelDataApellido;
+        private Label labelDataNombre;
+        private Label label3;
+        private Label labelDataFecha;
+        private Label label1;
+        private System.Drawing.Printing.PrintDocument printDocumentComprobante;
     }
 }
