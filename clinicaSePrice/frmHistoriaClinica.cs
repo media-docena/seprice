@@ -176,9 +176,9 @@ namespace clinicaSePrice
             //****************************************************
             if (dgvHC.Columns[e.ColumnIndex].Name == "ColumnaAccion") {
                 var hcSeleccionada = (HistoriaClinicaVM)dgvHC.CurrentRow.DataBoundItem;
-                // TODO: Pasar los datos de la hist. clínica seleccionada al formulario de detalle de la misma.
-                MessageBox.Show($"Los datos de la hist. clínica son id: {hcSeleccionada.IdHC} " +
-                    $"y el nombre del paciente a quién corresponde es: {hcSeleccionada.Nombre}", "AVISO DEL SISTEMA", MessageBoxButtons.OK);
+                var frmHistClinicaDetalle = new frmHistClinicaDetalle { HistClinica = hcSeleccionada };
+                frmHistClinicaDetalle.Show();
+                this.Close();
             }
 
         }
