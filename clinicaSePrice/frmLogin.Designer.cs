@@ -60,6 +60,7 @@
             // 
             // cboRol
             // 
+            cboRol.DropDownStyle = ComboBoxStyle.DropDownList;
             cboRol.Font = new Font("Segoe UI", 14F);
             cboRol.FormattingEnabled = true;
             cboRol.Items.AddRange(new object[] { "Administrador", "Médico" });
@@ -130,6 +131,7 @@
             btnIngresar.TabIndex = 0;
             btnIngresar.Text = "INGRESAR";
             btnIngresar.UseVisualStyleBackColor = false;
+            btnIngresar.Click += btnIngresar_Click;
             // 
             // picLogoLogin
             // 
@@ -179,6 +181,7 @@
             MinimizeBox = false;
             MinimumSize = new Size(1300, 650);
             Name = "frmLogin";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "LOGIN";
             pnlLogin.ResumeLayout(false);
             pnlLogin.PerformLayout();
